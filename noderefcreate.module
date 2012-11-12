@@ -95,7 +95,6 @@ function noderefcreate_autocomplete_process($element, $edit, $form_state, $form)
 
 
 function noderefcreate_autocomplete_validate($element, &$form_state) {
-  dpm($form_state);
   $field_name = $element['#field_name'];
   $type_name = $element['#type_name'];
   $field = content_fields($field_name, $type_name);
@@ -130,9 +129,6 @@ function noderefcreate_autocomplete_validate($element, &$form_state) {
         $newnode->noderefcreate['nid'] = $form_state['args'][0]['nid'];
         $newnode->noderefcreate
         node_save($newnode);
-        $stop = microtime(true);
-        dpm('node crée en ' . $stop - $start . ' secondes');
-        dpm($newnode);
         $nid = $newnode->nid;
       }
       else {
